@@ -41,18 +41,19 @@ button {
 header {
     display: flex;
     width: 90%;
-    height: 6rem;
+    min-height: 6rem;
     margin: 0 5%;
     justify-content: space-between;
     align-items: center;
     gap: 2rem;
     position: relative;
+    border-bottom: 4px solid #E4E4E4;
 }
 
 .logo {
     height: 2rem;
     width: max-content;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1rem 0.5rem 0;
 }
 
 /* cart items */
@@ -138,3 +139,184 @@ header {
     background-color: #FFFFFF;
 }
 /*  */
+
+main {
+    display: block;
+    width: 100%;
+}
+
+main .container1_sections {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(4, auto);
+    width: 90%;
+    min-height: calc(100svh - 6rem);
+    margin: 0 5%;
+    gap: 2rem;
+    padding: 3rem 0;
+    border-bottom: 4px solid #E4E4E4;
+    align-items: center;
+}
+
+.container1_sections h1 {
+    font-size: 2rem;
+    grid-area: 1 / 1 / 1 / 1;
+}
+
+.container1_sections .add_to_cart {
+    color: #FFFFFF;
+    font-size: 1.4375rem;
+    width: 16.0625rem;
+    height: 2.9375rem;
+    background-color: #000;
+    border: none;
+    grid-area: 1 / 2 / 1 / 3;
+    justify-self: flex-end;
+}
+
+.container1_sections figure {
+    display: block;
+    width: 100%;
+    height: 34.5625rem;
+    grid-area: 2 / 1 / 2 / 3;
+    position: relative;
+}
+
+.container1_sections figure .photo_of_the_day {
+    display: inherit;
+    width: 100%;
+    height: 100%;
+}
+
+.container1_sections figure figcaption {
+    width: 17rem;
+    line-height: 4.1875rem;
+    background-color: #FFFFFF;
+    font-size: 1.25rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+}
+
+.container1_sections .about_photo {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    grid-area: 3 / 1 / 5 / 1;
+}
+
+.about_photo h2 {
+    font-size: 1.375rem;
+}
+
+.about_photo h3 {
+    font-size: 1.375rem;
+    color: #656565;
+}
+
+.about_photo p {
+    font-size: 1.125rem;
+    text-wrap: balance;
+}
+
+.container1_sections .people_also_buy {
+    grid-area: 3 / 2 / 3 / 3;
+    display: inherit;
+    width: 100%;
+    gap: 1rem;
+}
+
+.people_also_buy h2 {
+    font-size: 1.375rem;
+    text-align: end;
+}
+
+.people_also_buy div {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.people_also_buy div img {
+    width: 7.3125rem;
+    height: 9.1875rem;
+}
+
+.container1_sections .photo_details {
+    grid-area: 4 / 2 / 4 / 3;
+    width: 100%;
+    display: inherit;
+    gap: 0.8rem;
+}
+
+.photo_details h2 {
+    font-size: 1.375rem;
+    text-align: end;
+}
+
+.photo_details p {
+    font-size: 1rem;
+    text-align: end;
+    color: #656565;
+}
+
+main .photography_section {
+    display: block;
+    width: 90%;
+    margin: 0 5%;
+    padding: 3rem 0;
+}
+
+.photography_section .first_child {
+    display: flex;
+    width: 100%;
+    margin-bottom: 3rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.photography_section .first_child h2 {
+    font-size: 1.875rem;
+
+    & span {
+        color: #9B9B9B;
+    }
+}
+
+.photography_section .first_child .sort {
+    display: flex;
+    align-items: center;
+    width: max-content;
+}
+
+.photography_section .first_child .sort label {
+    font-size: 1.375rem;
+    color: #9B9B9B;
+    position: relative;
+    margin-right: 0.5rem;
+}
+
+.photography_section .first_child .sort label::before {
+    content: '';
+    width: 1.375rem;;
+    height: 1.375rem;;
+    background-image: url(icons/sort.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: -1.5rem;
+}
+
+.photography_section .first_child .sort select {
+    width: 6rem;
+    line-height: 1.375rem;
+    border: none;
+    font-size: 1.375rem;
+    padding: 0;
+}
+
+.photography_section .second_child {
+    display: flex;
+}
