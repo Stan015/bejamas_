@@ -40,9 +40,9 @@ button {
 
 header {
     display: flex;
-    width: 90%;
+    width: 80%;
     min-height: 6rem;
-    margin: 0 5%;
+    margin: 0 10%;
     justify-content: space-between;
     align-items: center;
     gap: 2rem;
@@ -149,9 +149,9 @@ main .container1_sections {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(4, auto);
-    width: 90%;
+    width: 80%;
     min-height: calc(100svh - 6rem);
-    margin: 0 5%;
+    margin: 0 10%;
     gap: 2rem;
     padding: 3rem 0;
     border-bottom: 4px solid #E4E4E4;
@@ -264,8 +264,8 @@ main .container1_sections {
 
 main .photography_section {
     display: block;
-    width: 90%;
-    margin: 0 5%;
+    width: 80%;
+    margin: 0 10%;
     padding: 3rem 0;
 }
 
@@ -320,14 +320,14 @@ main .photography_section {
 .photography_section .second_child {
     display: flex;
     width: 100%;
-    gap: 4rem;
+    gap: 1rem;
     justify-content: space-between;
 }
 
 .photography_section .second_child .product_type {
     display: flex;
     flex-direction: column;
-    width: 15rem;
+    width: 14rem;
     flex-shrink: 0;
 }
 
@@ -365,7 +365,7 @@ main .photography_section {
 .photography_section .second_child .container {
     display: flex;
     flex-direction: column;
-    width: calc(100% - 15rem);
+    width: calc(100% - 14rem);
     gap: 2rem;
     justify-content: center;
 }
