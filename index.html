@@ -15,14 +15,15 @@
 
         <button type="button" class="cart_btn" aria-labelledby="cart"><img src="icons/shopping_cart.svg" alt="shopping cart" /></button>
         <div class="cart_items">
-            <button type="button"  class="close"><img src="icons/close.svg" alt="close icon"></button>
             <div class="cart_item_list">
                 <div class="item">
+                    <button type="button" aria-labelledby="delete item from cart" class="delete_item"><img src="icons/close.svg" alt="close icon"></button>
+
                     <div>
                         <h3>Samurai King Resting</h3>
                         <p>$10000.00</p>
                     </div>
-                    <img src="images/dog.png" alt="a dog sitting on the floor">
+                    <img src="images/dog.png" class="item_image" alt="a dog sitting on the floor">
                 </div>
             </div>
             <button type="button" class="clear_btn">CLEAR</button>
@@ -60,6 +61,7 @@
                 <h2>Details</h2>
                 <p>Size: 1020 x 1020 pixel</p>
                 <p>Size: 15 mb</p>
+                <p class="item_price">$10000.00</p>
             </div>
         </section>
 
