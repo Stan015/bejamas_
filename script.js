@@ -1,16 +1,34 @@
-// adding items to cart
-const cartBtn = document.querySelector('.cart_btn'); // gets header cart icon
-const cartItems = document.querySelector('.cart_items'); // gets div that contains close cart btn, items container and clear btn
-const itemsContainer = document.querySelector('.cart_item_list'); // gets items list container div
-const item = document.querySelectorAll('.item'); // gets all items on the cart
-const deleteItem = document.querySelector('.delete_item'); // gets delete item btn
+// Adding items to cart
+const cartBtn = document.querySelector('.cart_btn');
+const cartItems = document.querySelector('.cart_items');
+const itemsContainer = document.querySelector('.cart_item_list');
+const item = document.querySelectorAll('.item');
+const deleteItem = document.querySelector('.delete_item');
 
-// toggle open and close of cart
 cartBtn.addEventListener('click', () => {
     cartItems.classList.toggle('show_cart_items');
 });
-//
 
-itemsContainer = []
+// Grabbing already existing items
+const products = [];
 
-item = {}
+item.forEach((itemElement, index) => {
+    const itemName = itemElement.querySelector('.item_name').innerText;
+    const itemPriceText = itemElement.querySelector('.item_price').innerText;
+    const itemImage = itemElement.querySelector('.item_photo img').getAttribute('src');
+
+    // Extracting only numbers from the price
+    const itemPrice = parseFloat(itemPriceText.replace(/[^0-9.]/g, ''));
+
+    products.push({
+        id: index + 1,
+        name: itemName,
+        image: itemImage,
+        price: itemPrice,
+    });
+});
+
+console.log(products)
+
+// Cart items
+const cartItemsArray = [];

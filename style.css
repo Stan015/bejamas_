@@ -96,7 +96,7 @@ header {
     margin-bottom: 2rem;
 }
 
-.cart_item_list .item {
+.cart_item_list .cart_item {
     display: flex;
     width: 100%;
     height: 8rem;
@@ -126,17 +126,17 @@ header {
     height: inherit;
 }
 
-.cart_item_list .item div h3 {
+.cart_item_list .cart_item div h3 {
     font-size: 1.25rem;
     margin-bottom: 0.8rem;
 }
 
-.cart_item_list .item div p {
+.cart_item_list .cart_item div p {
     font-size: 1.8rem;
     color: #656565;
 }
 
-.cart_item_list .item .item_image {
+.cart_item_list .cart_item .item_image {
     width: 9.3125rem;
     height: 5.375rem;
 }
