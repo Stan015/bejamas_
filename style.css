@@ -93,7 +93,7 @@ header {
     width: 100%;
     border-bottom: 2px solid #C2C2C2;
     /* padding: 1rem 0; */
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .cart_item_list .cart_item {
@@ -139,6 +139,19 @@ header {
 .cart_item_list .cart_item .item_image {
     width: 9.3125rem;
     height: 5.375rem;
+}
+
+.cart_items .total_items_price {
+    font-size: 1rem;
+    color: #656565;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #C2C2C2;
+    height: 2.5rem;
+
+    & span {
+        font-size: inherit;
+        color: inherit;
+    }
 }
 
 .cart_items .clear_btn {
