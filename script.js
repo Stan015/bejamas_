@@ -26,7 +26,7 @@ item.forEach((itemElement, index) => {
     });
 });
 
-// add_to_cart fuction added to all add to cart btns
+// add_to_cart function added to all add to cart btns
 document.querySelectorAll('.add_to_cart').forEach((btn, index) => {
     btn.addEventListener('click', () => {
         addToCart(products[index]);
@@ -34,34 +34,103 @@ document.querySelectorAll('.add_to_cart').forEach((btn, index) => {
 });
 
 function addToCart(product) {
-    // Create a new cart item element
-    const cartItem = document.createElement('div');
-    cartItem.classList.add('cart_item');
+    // Check if the product is already in the cart
+    const existingCartItem = itemsContainer.querySelector(`.cart_item[data-id="${product.id}"]`);
 
-    // Populate the cart item with product details
-    cartItem.innerHTML = `
-        <button aria-labelledby="delete-item-label" class="delete_item"><img src="icons/close.svg" alt="Delete"></button>
-        <div class="cart_item_details">
-            <h3>${product.name}</h3>
-            <p>$${product.price.toFixed(2)}</p>
-        </div>
-        <img src="${product.image}" alt="${product.name}" class="item_image">
-    `;
+    if (existingCartItem) {
+        // Increment the quantity and update the total price
+        const quantityElement = existingCartItem.querySelector('.quantity');
+        const quantity = parseInt(quantityElement.innerText, 10) + 1;
+        quantityElement.innerText = quantity;
 
-    // Add the cart item to the cartItems container
-    itemsContainer.appendChild(cartItem);
+        // Update the total price
+        const totalPriceElement = existingCartItem.querySelector('.total_price');
+        const totalPrice = parseFloat(totalPriceElement.innerText.replace(/[^0-9.]/g, ''));
+        const updatedTotalPrice = (product.price * quantity).toFixed(2);
+        totalPriceElement.innerText = `$${updatedTotalPrice}`;
 
-    // Add event listener to remove the item from the cart
-    const deleteItem = cartItem.querySelector('.delete_item');
-    deleteItem.addEventListener('click', () => {
-        cartItem.remove();
-    });
+        // Update the total sum
+        updateTotalSum();
+    } else {
+        // Create a new cart item element
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart_item');
+        cartItem.setAttribute('data-id', product.id);
+
+        // Populate the cart item with product details
+        cartItem.innerHTML = `
+            <button aria-labelledby="delete-item-label" class="delete_item"><img src="icons/close.svg" alt="Delete"></button>
+            <div class="cart_item_details">
+                <h3>${product.name}</h3>
+                <p class="total_price">$${product.price.toFixed(2)}</p>
+            </div>
+            <div class="quantity">1</div>
+            <img src="${product.image}" alt="${product.name}" class="item_image">
+        `;
+
+        // Add the cart item to the cartItems container
+        itemsContainer.appendChild(cartItem);
+
+        // Add event listener to remove one item from the cart
+        const deleteItem = cartItem.querySelector('.delete_item');
+        deleteItem.addEventListener('click', () => {
+            decrementCartItem(cartItem);
+        });
+
+        // Update the total sum
+        updateTotalSum();
+    }
 }
 
-// clear all items in the cart
+function decrementCartItem(cartItem) {
+    // Decrement the quantity
+    const quantityElement = cartItem.querySelector('.quantity');
+    let quantity = parseInt(quantityElement.innerText, 10);
+
+    if (quantity > 1) {
+        quantityElement.innerText = quantity - 1;
+
+        // Update the total price
+        const totalPriceElement = cartItem.querySelector('.total_price');
+        const productPrice = parseFloat(cartItem.querySelector('.total_price').innerText.replace(/[^0-9.]/g, ''));
+        const updatedTotalPrice = (productPrice / quantity * (quantity - 1)).toFixed(2);
+        totalPriceElement.innerText = `$${updatedTotalPrice}`;
+    } else {
+        // If quantity is 1 or less, remove the entire cart item
+        cartItem.remove();
+    }
+
+    // Update the total sum
+    updateTotalSum();
+}
+
+// Total cart items price 
+function calculateTotalSum() {
+    let cartItems = itemsContainer.querySelectorAll('.cart_item');
+    let totalSum = 0;
+
+    cartItems.forEach(cartItem => {
+        const totalPriceElement = cartItem.querySelector('.total_price');
+        const totalPrice = parseFloat(totalPriceElement.innerText.replace(/[^0-9.]/g, ''));
+        totalSum += totalPrice;
+    });
+
+    return totalSum.toFixed(2);
+}
+
+function updateTotalSum() {
+    const totalSumElement = document.querySelector('.total_items_price');
+    const totalSum = calculateTotalSum();
+    totalSumElement.innerText = `Total Price: $${totalSum}`;
+}
+
+// Clear all items in the cart
 const clearCartItems = document.querySelector('.clear_btn');
 
 clearCartItems.addEventListener('click', () => {
-    products.length = 0;
-    itemsContainer.innerHTML = '';
-})
+    let cartItems = itemsContainer.querySelectorAll('.cart_item');
+    cartItems.forEach(item => item.remove());
+
+    // Update the total sum
+    updateTotalSum();
+});
