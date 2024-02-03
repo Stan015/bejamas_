@@ -19,7 +19,11 @@
                 <!-- cart items to be added with js -->
             </div>
             <p class="total_items_price">Total Price: $0.00</p>
-            <button type="button" class="clear_btn">CLEAR</button>
+            
+            <div class="cart_action">
+                <button type="button" class="clear_btn">CLEAR</button>
+                <button type="button" class="checkout_btn">CHECKOUT</button>
+            </div>
         </div>
     </header>
 
@@ -62,7 +66,7 @@
             <div class="first_child">
                 <h2>Photography / <span class="current_photo_type">Premium Photos</span></h2>
 
-                <div class="sort">
+                <div class="sort desktop_sort_options">
                     <label for="sort_by">Sort By</label>
                     <select name="sort_by" id="sort_by">
                         <option value="price">Price</option>
@@ -70,71 +74,72 @@
                         <option value="type">Type</option>
                     </select>
                 </div>
+
+                <button type="button" class="mobile_sort_icon"><img src="icons/sort_icon.svg" alt="sort icon"></button>
             </div>
 
             <div class="second_child">
                 <div class="product_type">
-                    <div class="category_options">
-                        <h3>Category</h3>
+                    <div class="options_container">
+                        <button type="button" class="close_sort_list"><img src="icons/close.svg" alt="close sort list"></button>
 
-                        <label>
-                            <input type="checkbox" name="people" id="people">
-                            People
-                        </label>
-
-                        <label>
-                            <input type="checkbox" name="premium" id="premium">
-                            Premium
-                        </label>
-
-                        <label>
-                            <input type="checkbox" name="pets" id="pets">
-                            Pets
-                        </label>
-
-                        <label>
-                            <input type="checkbox" name="food" id="food">
-                            Food
-                        </label>
-
-                        <label>
-                            <input type="checkbox" name="landmarks" id="landmarks">
-                            Landmarks
-                        </label>
-
-                        <label>
-                            <input type="checkbox" name="cities" id="cities">
-                            Cities
-                        </label>
-
-                        <label>
-                            <input type="checkbox" name="nature" id="nature">
-                            Nature
-                        </label>
+                        <div class="category_options">
+                            <h3 class="destop_filter_h3">Category</h3>
+                            <h3 class="mobile_filter_h3">Filter</h3>
+                            
+                            <label>
+                                <input type="checkbox" name="people" id="people">
+                                People
+                            </label>
+                            <label>
+                                <input type="checkbox" name="premium" id="premium">
+                                Premium
+                            </label>
+                            <label>
+                                <input type="checkbox" name="pets" id="pets">
+                                Pets
+                            </label>
+                            <label>
+                                <input type="checkbox" name="food" id="food">
+                                Food
+                            </label>
+                            <label>
+                                <input type="checkbox" name="landmarks" id="landmarks">
+                                Landmarks
+                            </label>
+                            <label>
+                                <input type="checkbox" name="cities" id="cities">
+                                Cities
+                            </label>
+                            <label>
+                                <input type="checkbox" name="nature" id="nature">
+                                Nature
+                            </label>
+                        </div>
+                        <div class="price_range">
+                            <h3>Price range</h3>
+                            <label>
+                                <input type="checkbox" name="price1" id="price1">
+                                Lower than $20
+                            </label>
+                            <label>
+                                <input type="checkbox" name="price2" id="price2">
+                                $20 - $100
+                            </label>
+                            <label>
+                                <input type="checkbox" name="price3" id="price3">
+                                $100 - $200
+                            </label>
+                            <label>
+                                <input type="checkbox" name="price4" id="price4">
+                                More than $200
+                            </label>
+                        </div>
                     </div>
 
-                    <div class="price_range">
-                        <h3>Price range</h3>
-
-                        <label>
-                            <input type="checkbox" name="price1" id="price1">
-                            Lower than $20
-                        </label>
-
-                        <label>
-                            <input type="checkbox" name="price2" id="price2">
-                            $20 - $100
-                        </label>
-
-                        <label>
-                            <input type="checkbox" name="price3" id="price3">
-                            $100 - $200
-                        </label>
-
-                        <label>
-                            <input type="checkbox" name="price4" id="price4">
-                            More than $200
-                        </label>
+                    <div class="type_action">
+                        <button class="clear_selection" type="button">Clear</button>
+                        <button class="save_selection" type="button">Save</button>
                     </div>
                 </div>
 

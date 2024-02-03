@@ -71,7 +71,7 @@ function addToCart(product) {
         // Add the cart item to the cartItems container
         itemsContainer.appendChild(cartItem);
 
-        // Add event listener to remove one item from the cart
+        // Event listener to remove one item from the cart
         const deleteItem = cartItem.querySelector('.delete_item');
         deleteItem.addEventListener('click', () => {
             decrementCartItem(cartItem);
@@ -134,3 +134,44 @@ clearCartItems.addEventListener('click', () => {
     // Update the total sum
     updateTotalSum();
 });
+//
+
+// Checkout cart items
+const checkoutBtn = document.querySelector('.checkout_btn');
+
+checkoutBtn.addEventListener('click', () => {
+    const checkoutStatus = document.createElement('div');
+    checkoutStatus.classList.add('chechout_msg');
+    const totalSumElement = document.querySelector('.total_items_price')
+     
+    if (totalSumElement.innerHTML === 'Total Price: $0.00') {
+        checkoutStatus.innerHTML = `
+            <p>Your cart is empty. <br>Continue shopping to add items to cart. 🙃</p>
+        `;
+    } else {
+        checkoutStatus.innerHTML = `
+            <p>Yehh! Items added to your checkout list! <br>Next step is under construction 😃</p>
+        `;
+    }
+
+    document.body.appendChild(checkoutStatus);
+
+    setTimeout(() => {
+        checkoutStatus.remove();
+    }, 2500);
+});
+//
+
+//toggle product options (mobile view)
+const mobileSort = document.querySelector('.mobile_sort_icon');
+const productTypes = document.querySelector('.product_type');
+const closeProductOptions = document.querySelector('.close_sort_list');
+
+mobileSort.addEventListener('click', () => {
+    productTypes.classList.add('show_product_options')
+});
+
+closeProductOptions.addEventListener('click', () => {
+    productTypes.classList.remove('show_product_options')
+});
+//
