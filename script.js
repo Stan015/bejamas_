@@ -108,21 +108,30 @@ function decrementCartItem(cartItem) {
 function calculateTotalSum() {
     let cartItems = itemsContainer.querySelectorAll('.cart_item');
     let totalSum = 0;
+    let totalQuantity = 0;
 
     cartItems.forEach(cartItem => {
         const totalPriceElement = cartItem.querySelector('.total_price');
         const totalPrice = parseFloat(totalPriceElement.innerText.replace(/[^0-9.]/g, ''));
         totalSum += totalPrice;
+
+        const quantityElement = cartItem.querySelector('.quantity');
+        const quantity = parseInt(quantityElement.innerText, 10);
+        totalQuantity += quantity;
     });
 
-    return totalSum.toFixed(2);
+    return { totalSum: totalSum.toFixed(2), totalQuantity };
 }
 
 function updateTotalSum() {
+    const { totalSum, totalQuantity } = calculateTotalSum();
     const totalSumElement = document.querySelector('.total_items_price');
-    const totalSum = calculateTotalSum();
+    const totalQuantityElement = document.querySelector('.total_quantity');
+
     totalSumElement.innerText = `Total Price: $${totalSum}`;
+    totalQuantityElement.innerText = totalQuantity;
 }
+//
 
 // Clear all items in the cart
 const clearCartItems = document.querySelector('.clear_btn');

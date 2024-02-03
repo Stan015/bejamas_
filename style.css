@@ -66,11 +66,22 @@ header {
     border: none;
     width: 3rem;
     height: 3rem;
+    position: relative;
 }
 
 .cart_btn img {
     width: inherit;
     height: inherit;
+}
+
+.cart_btn .total_quantity {
+    position: absolute;
+    font-size: 1rem;
+    color: #FFFFFF;
+    line-height: 1rem;
+    background-color: #000000;
+    right: 0;
+    bottom: 5%;
 }
 
 .cart_items {
