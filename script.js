@@ -3,6 +3,7 @@ const cartIcon = document.querySelector('.cart_btn');
 const cartItems = document.querySelector('.cart_items');
 const itemsContainer = document.querySelector('.cart_item_list');
 const item = document.querySelectorAll('.item');
+const deleteItem = document.querySelector('.delete_item');
 
 cartIcon.addEventListener('click', () => {
     cartItems.classList.toggle('show_cart_items');
@@ -26,10 +27,28 @@ item.forEach((itemElement, index) => {
     });
 });
 
+// instance of Notyf library
+const notyf = new Notyf({
+    duration: 2500,
+    ripple: false,
+
+    // types: [
+    //     {
+    //         type: 'warning',
+    //         background: 'orange',
+    //         icon: '⚠'
+    //     }
+    // ]
+});
+//
+
 // add_to_cart function added to all add to cart btns
 document.querySelectorAll('.add_to_cart').forEach((btn, index) => {
     btn.addEventListener('click', () => {
         addToCart(products[index]);
+
+        notyf.success('Added to cart')
+        //
     });
 });
 
@@ -75,6 +94,11 @@ function addToCart(product) {
         const deleteItem = cartItem.querySelector('.delete_item');
         deleteItem.addEventListener('click', () => {
             decrementCartItem(cartItem);
+
+            notyf.error({
+                message: 'An item got deleted from cart',
+                background: 'orange'
+            })
         });
 
         // Update the total sum
@@ -157,6 +181,8 @@ checkoutBtn.addEventListener('click', () => {
         checkoutStatus.innerHTML = `
             <p>Your cart is empty. <br>Continue shopping to add items to cart. 🙃</p>
         `;
+
+        notyf.error('Your cart is empty')
     } else {
         checkoutStatus.innerHTML = `
             <p>Yehh! Items added to your checkout list! <br>Next step is under construction 😃</p>
